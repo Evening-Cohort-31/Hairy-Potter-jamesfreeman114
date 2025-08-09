@@ -121,33 +121,35 @@ In the `main.js` module, invoke the `PotteryList` component function. Take its r
 
 1. Explain how you got the HTML, with the correct data, displayed in the browser?
 
+Displaying the HTML in browser with the correct data requires the use of two functions in the potteryList.js module. The first function, potteryList, uses a for..of loop to iterate over the array of objects stored in the variable 'sellThatPottery' that is imported from the main module. For each object in the array, the value for the keys: id, shape, weight, height, and price are placed within an html string that repeats itself for each of the objects until it finally returns a single string with all the html code.
 
-
+The second function, renderPotteryToDOM, accepts the html string created by the 'potteryList' function as a parameter, targets the specific id container 'finalPottery' using the 'document.getElementById' method, and then finally updates the inner HTML of this element using the '.innerHTML' method. If for any reason, the function is unable to find an html element with an id of 'finalPottery' it will display an error message of: 'Could not find element with id finalPottery.'
 
 
 2. In the **PotteryList** module, when you iterate your pottery, you need to show the evidence of what the **weight** property's value is for the 2nd piece of pottery.
 
 
- Use [Loom](https://www.loom.com/) to record your browser window with the developer tools open and show those values.
-Paste your video's public URL here
-
+https://www.loom.com/share/0855549ebbdd4a3b8ce9af5f7e24ba12?sid=3617bc32-3a95-4477-b456-7a6c76773b27
 
 
 3. The **PotteryWheel** module has a single function named `makePottery`. Why doesn't that module have all of the other code in it?
 
-   > Your answer here
-
+The main reason for having only a single function in the 'potteryWheel' module is organization. If this project was shared with multiple people, and someone else needed to update the code in 'makePottery' it could easily be found and changed. 
 
 
 4. The pottery shop has learned that there is a set of customers that are willing to buy cracked pottery at a discounted price of $2.50. That means that the cracked pottery should now be displayed in the catalog. Explain the changes that this new business strategy would cause to your algorithm.
    
-   
-   
-   > Your answer here
+This new change would require the code for the function 'toSellOrNotToSell()' in the potteryCatalog module to be updated and push the cracked pottery objects into the 'potteryToBeSold' array with a price value of $2.50. This could be done by adding the following lines of code into the function:
 
+if (potteryObject.cracked === true)  {
+        potteryObject.price = 2.50;
+        potteryToBeSold.push(potteryObject);
+    }
+
+This will check each object's value for 'cracked' and if the value is "true" the function will now add a price key with a value of 2.50 to the object then push it into the 'potteryToBeSold' array. Now that the cracked pottery is in this array, it will be exported using the usePottery() function along with the un-cracked pottery. The cracked pottery objects will now be included in the next two steps in the algorithm which generate the html string then display it in the browser.
 
 
 5. In the **Kiln** module, you have a `firePottery()` function. You need to demonstrate how to use the debugger to verify the values of the parameters for that function when your code runs. Use [Loom](https://www.loom.com/) to record your browser window with the developer tools open and show those values.
    
    
-   > Paste your video's public URL here
+https://www.loom.com/share/4b1c355dc13c403f93c9ad2f6dbeebcf?sid=075aad97-ac53-4ae6-9fcd-499c0f03472c
